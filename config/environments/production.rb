@@ -1,4 +1,4 @@
-Rails.application.configure 
+Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security,
   # and use secure cookies.

@@ -4,21 +4,24 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.0'
 
 # Use PostgreSQL
-gem 'pg'
-
+group :production do
+	gem 'pg'
+	gem 'rails_12factor'
+	gem 'puma'
+end
 #the book told me to
 gem 'bcrypt', '3.1.7'
 
-#for suhkurity
-gem 'puma'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+group :assets do
+	gem 'sass-rails', '~> 5.0'
 
-gem 'bootstrap-sass', '3.3.3'
-gem 'bootstrap_form'
-gem 'haml'
-gem 'haml-rails'
+	gem 'bootstrap-sass', '3.3.3'
+	gem 'bootstrap_form'
+	gem 'haml'
+	gem 'haml-rails'
+end
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

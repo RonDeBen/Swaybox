@@ -1,0 +1,38 @@
+%h1 Wardrobes
+=link_to 'New Wardrobe', new_wardrobe_path, class: "btn  btn-primary btn-block"
+%br/
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th Name
+      %th{:colspan => "2"} Commands
+  %tbody
+    %tr
+      %td= Wardrobe
+      %td= link_to 'Edit', edit_wardrobe_path(Wardrobe)
+      %td= link_to 'Destroy', Wardrobe, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+
+
+
+
+
+/ %h1 Listing wardrobes
+
+/ %table
+/   %thead
+/     %tr
+/       %th
+/       %th
+/       %th
+
+/   %tbody
+/     - @wardrobes.each do |wardrobe|
+/       %tr
+/         %td= link_to 'Show', wardrobe
+/         %td= link_to 'Edit', edit_wardrobe_path(wardrobe)
+/         %td= link_to 'Destroy', wardrobe, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+/ %br
+
+/ = link_to 'New Wardrobe', new_wardrobe_path

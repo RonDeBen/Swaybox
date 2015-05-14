@@ -1,0 +1,2 @@
+module McStatusHelper
+end

@@ -1,0 +1,2 @@
+module RegStatusesHelper
+end

@@ -1,0 +1,17 @@
+<%= form_for(@wide_status) do |f| %>
+  <% if @wide_status.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wide_status.errors.count, "error") %> prohibited this wide_status from being saved:</h2>
+
+      <ul>
+      <% @wide_status.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

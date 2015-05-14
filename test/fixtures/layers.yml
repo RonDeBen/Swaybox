@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  time: MyString
+  transition: MyString
+  cam: MyString
+  difficulty: MyString
+  WidePuppets: 1
+  McPuppets: 1
+  playOption: MyString
+  Props: 1
+  Wardrobe: 1
+  tracking: MyString
+  PColor: MyString
+  notes: MyString
+
+two:
+  name: MyString
+  time: MyString
+  transition: MyString
+  cam: MyString
+  difficulty: MyString
+  WidePuppets: 1
+  McPuppets: 1
+  playOption: MyString
+  Props: 1
+  Wardrobe: 1
+  tracking: MyString
+  PColor: MyString
+  notes: MyString

@@ -6,14 +6,14 @@ one:
   transition: MyString
   cam: MyString
   difficulty: MyString
-  WidePuppets: 1
-  McPuppets: 1
-  playOption: MyString
-  Props: 1
-  Wardrobe: 1
+  WidePuppet: 1
+  MidClosePuppet: 1
+  PlayOption: MyString
+  props: 1
+  wardrobe: 1
   tracking: MyString
   PColor: MyString
-  notes: MyString
+  notes: MyText
 
 two:
   name: MyString
@@ -21,11 +21,11 @@ two:
   transition: MyString
   cam: MyString
   difficulty: MyString
-  WidePuppets: 1
-  McPuppets: 1
-  playOption: MyString
-  Props: 1
-  Wardrobe: 1
+  WidePuppet: 1
+  MidClosePuppet: 1
+  PlayOption: MyString
+  props: 1
+  wardrobe: 1
   tracking: MyString
   PColor: MyString
-  notes: MyString
+  notes: MyText

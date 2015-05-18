@@ -1,0 +1,22 @@
+= bootstrap_form_for(@layer) do |f|
+  - if @layer.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@layer.errors.count, "error")} prohibited this layer from being saved:"
+      %ul
+        - @layer.errors.full_messages.each do |msg|
+          %li= msg
+  = f.text_field :name, label:"Name"
+  = f.text_field :time, label:"Time"
+  = f.text_field :transition, label:"Transition"
+  = f.text_field :cam, label:"Cam"
+  = f.text_field :difficulty, label:"Difficulty"
+  = f.collection_select :WidePuppet, WidePuppet.order('wide_puppets.name asc').all, :id, :name, include_blank:true
+  = f.collection_select :MidClosePuppet, McPuppet.order('mc_puppets.name asc').all, :id, :name, include_blank:true
+  = f.text_field :PlayOption, label:"Play Option"
+  = f.collection_select :props, Prop.order('props.name asc').all, :id, :name, include_blank:true
+  = f.collection_select :wardrobe, Wardrobe.order('Wardrobes.name asc').all, :id, :name, include_blank:true
+  = f.text_field :tracking, label:"Tracking"
+  = f.text_field :PColor, label:"PColor"
+  = f.text_area :notes, label:"Notes" 
+  .actions
+    = f.submit 'Save'

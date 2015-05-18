@@ -1,10 +1,11 @@
-- provide(:title, 'Wardrobe')
-%h1 Wardrobe
-.row
-  .col-md-3
-    = bootstrap_form_for @wardrobe do |f|
-      = f.text_field :name, label:"Name:"
-      = f.submit "Update Wardrobe", class: "btn btn-primary"
-  .col-md-9
-    
-    
+= bootstrap_form_for(@wardrobe) do |f|
+  - if @wardrobe.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@wardrobe.errors.count, "error")} prohibited this wardrobe from being saved:"
+      %ul
+        - @wardrobe.errors.full_messages.each do |msg|
+          %li= msg
+  = f.text_field :name, label:"Name"
+  = f.collection_select :status, RegStatus.all, :id,:stage,include_blank:true
+  .actions
+    = f.submit 'Save'

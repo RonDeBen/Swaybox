@@ -1,0 +1,15 @@
+%h1 Mid-Close Puppet Statuses
+=link_to 'New Status', new_mc_status_path, class: "btn  btn-info btn-block"
+%br/
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th Stage of Development
+      %th{:colspan => "2"} Commands
+  %tbody
+    - @mc_statuses.each do |status|
+      %tr
+        %td= status.stage
+        %td= link_to 'Edit', edit_mc_status_path(status)
+        %td= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' }
+%br/

@@ -1,5 +1,6 @@
 class ShotBreakdown < ActiveRecord::Base
-	belongs_to :Movie
+	#relationships
+	has_many :layers
 
-	has_many :Layers
+	belongs_to :movie
 end

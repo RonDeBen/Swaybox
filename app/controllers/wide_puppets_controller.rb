@@ -69,6 +69,6 @@ class WidePuppetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wide_puppet_params
-      params[:wide_puppet]
+      params.require(:wide_puppet).permit(:name, :status, [:id])
     end
 end

@@ -1,0 +1,11 @@
+= bootstrap_form_for(@mc_puppet) do |f|
+  - if @mc_puppet.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@mc_puppet.errors.count, "error")} prohibited this mc_puppet from being saved:"
+      %ul
+        - @mc_puppet.errors.full_messages.each do |msg|
+          %li= msg
+  = f.text_field :name, label:"Name"
+  = f.collection_select :status, McStatus.all, :id,:stage,include_blank:true
+  .actions
+    = f.submit 'Save'

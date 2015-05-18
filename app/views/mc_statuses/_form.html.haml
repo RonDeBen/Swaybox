@@ -1,0 +1,10 @@
+= bootstrap_form_for(@mc_status) do |f|
+  - if @mc_status.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@mc_status.errors.count, "error")} prohibited this mc_status from being saved:"
+      %ul
+        - @mc_status.errors.full_messages.each do |msg|
+          %li= msg
+  = f.text_field :stage, label:"Stage of Development"
+  .actions
+    = f.submit 'Save'

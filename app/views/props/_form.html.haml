@@ -1,0 +1,11 @@
+= bootstrap_form_for(@prop) do |f|
+  - if @prop.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@prop.errors.count, "error")} prohibited this prop from being saved:"
+      %ul
+        - @prop.errors.full_messages.each do |msg|
+          %li= msg
+  = f.text_field :name, label:"Name"
+  = f.collection_select :status, RegStatus.all, :id,:stage,include_blank:true
+  .actions
+    = f.submit 'Save'

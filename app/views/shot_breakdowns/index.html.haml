@@ -1,0 +1,19 @@
+%h1 Listing shot_breakdowns
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @shot_breakdowns.each do |shot_breakdown|
+      %tr
+        %td= link_to 'Show', shot_breakdown
+        %td= link_to 'Edit', edit_shot_breakdown_path(shot_breakdown)
+        %td= link_to 'Destroy', shot_breakdown, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Shot breakdown', new_shot_breakdown_path

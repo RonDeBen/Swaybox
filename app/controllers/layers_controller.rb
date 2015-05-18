@@ -69,6 +69,6 @@ class LayersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def layer_params
-      params[:layer]
+      params.require(:layer).permit(:name, :time, :transition, :cam, :difficulty, :WidePuppet, :MidClosePUppet, :PlayOption, :props, :wardrobe, :tracking, :PColor, :notes)
     end
 end

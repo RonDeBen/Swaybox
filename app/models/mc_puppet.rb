@@ -1,3 +1,4 @@
 class McPuppet < ActiveRecord::Base
-	belongs_to :Layer
+	#relationships
+	belongs_to :layer
 end

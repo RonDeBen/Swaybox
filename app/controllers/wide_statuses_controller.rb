@@ -69,6 +69,6 @@ class WideStatusesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wide_status_params
-      params[:wide_status]
+      params.require(:wide_status).permit(:stage, [:id])
     end
 end

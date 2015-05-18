@@ -69,6 +69,6 @@ class RegStatusesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reg_status_params
-      params[:reg_status]
+      params.require(:reg_status).permit(:stage, [:id])
     end
 end

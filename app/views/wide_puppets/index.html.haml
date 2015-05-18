@@ -1,0 +1,17 @@
+%h1 Wide Puppets
+=link_to 'New Puppet', new_wide_puppet_path, class: "btn  btn-info btn-block"
+%br/
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th Name
+      %th Status
+      %th{:colspan => "2"} Commands
+  %tbody
+    - @wide_puppets.order('wide_puppets.name asc').each do |puppet|
+      %tr
+        %td= puppet.name
+        %td= WideStatus.find_by(id: puppet.status).stage
+        %td= link_to 'Edit', edit_wide_puppet_path(puppet)
+        %td= link_to 'Destroy', puppet, method: :delete, data: { confirm: 'Are you sure?' }
+%br/

@@ -1,0 +1,17 @@
+%h1 Props
+=link_to 'New Prop', new_prop_path, class: "btn  btn-info btn-block"
+%br/
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th Name
+      %th Status
+      %th{:colspan => "2"} Commands
+  %tbody
+    - @props.order('props.name asc').each do |prop|
+      %tr
+        %td= prop.name
+        %td= RegStatus.find_by(id: prop.status).stage
+        %td= link_to 'Edit', edit_prop_path(prop)
+        %td= link_to 'Destroy', prop, method: :delete, data: { confirm: 'Are you sure?' }
+%br/

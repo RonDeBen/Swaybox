@@ -1,0 +1,17 @@
+%h1 Sets
+=link_to 'New Set', new_location_path, class: "btn  btn-info btn-block"
+%br/
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th Name
+      %th Status
+      %th{:colspan => "2"} Commands
+  %tbody
+    - @locations.order('locations.name asc').each do |set|
+      %tr
+        %td= set.name
+        %td= RegStatus.find_by(id: set.status).stage
+        %td= link_to 'Edit', edit_location_path(set)
+        %td= link_to 'Destroy', set, method: :delete, data: { confirm: 'Are you sure?' }
+%br/

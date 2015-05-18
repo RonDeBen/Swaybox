@@ -69,6 +69,6 @@ class WardrobesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wardrobe_params
-      params.require(:wardrobe).permit
+      params.require(:wardrobe).permit(:name, :status, [:id])
     end
 end

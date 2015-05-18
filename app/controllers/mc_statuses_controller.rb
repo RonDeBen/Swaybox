@@ -69,6 +69,6 @@ class McStatusesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mc_status_params
-      params[:mc_status]
+      params.require(:mc_status).permit(:stage, [:id])
     end
 end

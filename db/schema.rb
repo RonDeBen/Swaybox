@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150514155513) do
+ActiveRecord::Schema.define(version: 20150518192522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,16 +28,23 @@ ActiveRecord::Schema.define(version: 20150514155513) do
     t.string   "transition"
     t.string   "cam"
     t.string   "difficulty"
-    t.integer  "WidePuppets"
-    t.integer  "McPuppets"
-    t.string   "playOption"
-    t.integer  "Props"
-    t.integer  "Wardrobe"
+    t.integer  "WidePuppet"
+    t.integer  "MidClosePuppet"
+    t.string   "PlayOption"
+    t.integer  "props"
+    t.integer  "wardrobe"
     t.string   "tracking"
     t.string   "PColor"
-    t.string   "notes"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.text     "notes"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "mc_puppets", force: :cascade do |t|
@@ -48,14 +55,13 @@ ActiveRecord::Schema.define(version: 20150514155513) do
   end
 
   create_table "mc_statuses", force: :cascade do |t|
-    t.string   "status"
+    t.string   "stage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "movies", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "ShotBreakdowns"
+    t.string   "ShotBreakdowns"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
@@ -68,15 +74,15 @@ ActiveRecord::Schema.define(version: 20150514155513) do
   end
 
   create_table "reg_statuses", force: :cascade do |t|
-    t.string   "status"
+    t.string   "stage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "shot_breakdowns", force: :cascade do |t|
-    t.string   "Description"
-    t.integer  "Set"
     t.integer  "Layers"
+    t.text     "description"
+    t.integer  "set"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -94,6 +100,7 @@ ActiveRecord::Schema.define(version: 20150514155513) do
 
   create_table "wardrobes", force: :cascade do |t|
     t.string   "name"
+    t.integer  "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -106,7 +113,7 @@ ActiveRecord::Schema.define(version: 20150514155513) do
   end
 
   create_table "wide_statuses", force: :cascade do |t|
-    t.string   "status"
+    t.string   "stage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

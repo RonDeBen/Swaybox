@@ -1,4 +1,6 @@
 class RegStatus < ActiveRecord::Base
-	belongs_to :Wardrobe
-	belongs_to :Prop
+	#relationships
+	belongs_to :wardrobe
+	belongs_to :prop
+	belongs_to :location
 end

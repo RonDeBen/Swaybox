@@ -2,8 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
 
-  helper_method :is_admin?
-
   protected
 
   def authorize
@@ -15,6 +13,10 @@ class ApplicationController < ActionController::Base
   end
 
   def is_admin?
-  	current_user.admin
+    if current_user == nil
+      false
+  	else
+      current_user.admin
+    end
   end
 end

@@ -1,0 +1,17 @@
+%h1 Users
+=link_to 'New User', new_user_path, class: "btn  btn-info btn-block"
+%br/
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th Name
+      %th Email
+      %th{:colspan => "2"} Commands
+  %tbody
+    - @users.order('users.name asc').each do |user|
+      %tr
+        %td= user.name
+        %td= user.email
+        %td= link_to 'Edit', edit_user_path(user)
+        %td= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
+%br/

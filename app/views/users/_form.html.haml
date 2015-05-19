@@ -10,7 +10,6 @@
   = f.password_field :password
   = f.password_field :password_confirmation, label:"Password Confirmation"
   - if is_admin?
-    = f.check_box :is_admin, label:"Is Admin"
+    = f.check_box :admin, label:"Is Admin"
   = f.submit "Update Account", class: "btn btn-primary"
   .actions
-    = f.submit 'Save'

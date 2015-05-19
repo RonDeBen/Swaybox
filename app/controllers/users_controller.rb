@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-  before_filter :authorize_admin, only: :index
+  before_filter :authorize, only: :index
   include SessionsHelper
   def show
   	@user = User.find(params[:id])
-  	#debugger
+  	debugger
   end
 
   def new

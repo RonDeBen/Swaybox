@@ -1,4 +1,5 @@
 class WidePuppetsController < ApplicationController
+  before_filter :authorize
   before_action :set_wide_puppet, only: [:show, :edit, :update, :destroy]
 
   # GET /wide_puppets

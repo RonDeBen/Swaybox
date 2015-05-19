@@ -1,4 +1,5 @@
 class LayersController < ApplicationController
+  before_filter :authorize
   before_action :set_layer, only: [:show, :edit, :update, :destroy]
 
   # GET /layers

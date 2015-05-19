@@ -1,4 +1,5 @@
 class RegStatusesController < ApplicationController
+  before_filter :authorize
   before_action :set_reg_status, only: [:show, :edit, :update, :destroy]
 
   # GET /reg_statuses

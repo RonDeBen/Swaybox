@@ -1,4 +1,5 @@
 class WideStatusesController < ApplicationController
+  before_filter :authorize
   before_action :set_wide_status, only: [:show, :edit, :update, :destroy]
 
   # GET /wide_statuses

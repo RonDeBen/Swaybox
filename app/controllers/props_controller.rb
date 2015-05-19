@@ -1,4 +1,5 @@
 class PropsController < ApplicationController
+  before_filter :authorize
   before_action :set_prop, only: [:show, :edit, :update, :destroy]
 
   # GET /props

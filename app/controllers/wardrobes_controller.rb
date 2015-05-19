@@ -1,4 +1,5 @@
 class WardrobesController < ApplicationController
+  before_filter :authorize
   before_action :set_wardrobe, only: [:show, :edit, :update, :destroy]
 
   # GET /wardrobes

@@ -1,4 +1,5 @@
 class ShotBreakdownsController < ApplicationController
+  before_filter :authorize
   before_action :set_shot_breakdown, only: [:show, :edit, :update, :destroy]
 
   # GET /shot_breakdowns

@@ -1,4 +1,5 @@
 class McPuppetsController < ApplicationController
+  before_filter :authorize
   before_action :set_mc_puppet, only: [:show, :edit, :update, :destroy]
 
   # GET /mc_puppets

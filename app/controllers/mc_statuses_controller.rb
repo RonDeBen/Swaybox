@@ -1,4 +1,5 @@
 class McStatusesController < ApplicationController
+  before_filter :authorize
   before_action :set_mc_status, only: [:show, :edit, :update, :destroy]
 
   # GET /mc_statuses

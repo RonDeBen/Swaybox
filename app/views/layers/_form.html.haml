@@ -10,13 +10,30 @@
   = f.text_field :transition, label:"Transition"
   = f.text_field :cam, label:"Cam"
   = f.text_field :difficulty, label:"Difficulty"
-  = f.collection_select :WidePuppet, WidePuppet.order('wide_puppets.name asc').all, :id, :name, include_blank:true
-  = f.collection_select :MidClosePuppet, McPuppet.order('mc_puppets.name asc').all, :id, :name, include_blank:true
+  = f.nested_fields_for :wide_puppets do |ff|
+    .left= ff.collection_select :name, WidePuppet.order('wide_puppets.name asc').all, :id, :name, include_blank:true, label:"Wide Puppet"
+    .right= ff.remove_nested_fields_link 'Remove Wide Puppet', class: 'btn btn-danger', role: 'button'
+  = f.add_nested_fields_link :wide_puppets, 'Add Wide Puppet', class: 'btn btn-success btn-block', role: 'button'
+
+  = f.nested_fields_for :mc_puppets do |ff|
+    .right= ff.remove_nested_fields_link 'Remove Mid-Close Puppet', class: 'btn btn-danger btn-block', role: 'button'
+    .left= ff.collection_select :name, McPuppet.order('mc_puppets.name asc').all, :id, :name, include_blank:true, label:"Mid-Close Puppet"
+  = f.add_nested_fields_link :mc_puppets, 'Add Mid-Close Puppet', class: 'btn btn-success btn-block', role: 'button'
+
   = f.text_field :PlayOption, label:"Play Option"
-  = f.collection_select :props, Prop.order('props.name asc').all, :id, :name, include_blank:true
-  = f.collection_select :wardrobe, Wardrobe.order('Wardrobes.name asc').all, :id, :name, include_blank:true
+
+  = f.nested_fields_for :props do |ff|
+    .right= ff.remove_nested_fields_link 'Remove Prop', class: 'btn btn-danger btn-block', role: 'button'
+    .left= ff.collection_select :name, Prop.order('props.name asc').all, :id, :name, include_blank:true, label:"Prop"
+  = f.add_nested_fields_link :props, 'Add Prop', class: 'btn btn-success btn-block', role: 'button'
+
+  = f.nested_fields_for :wardrobes do |ff|
+    .right= ff.remove_nested_fields_link 'Remove Wardrobe', class: 'btn btn-danger btn-block', role: 'button'
+    .left= ff.collection_select :name, Wardrobe.order('wardrobes.name asc').all, :id, :name, include_blank:true, label:"Wardrobe"
+  = f.add_nested_fields_link :wardrobes, 'Add Wardrobe', class: 'btn btn-success btn-block', role: 'button'
+
   = f.text_field :tracking, label:"Tracking"
   = f.text_field :PColor, label:"PColor"
   = f.text_area :notes, label:"Notes" 
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class: "btn btn-info btn-block"

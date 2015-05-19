@@ -18,6 +18,9 @@ class WidePuppetsController < ApplicationController
     @wide_puppet = WidePuppet.new
   end
 
+  def wide_puppet
+    @wide_puppet = WidePuppet.new
+  end
   # GET /wide_puppets/1/edit
   def edit
   end

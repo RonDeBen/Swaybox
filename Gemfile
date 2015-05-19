@@ -13,6 +13,8 @@ end
 #the book told me to
 gem 'bcrypt', '3.1.7'
 
+#nested fields, yadigg?
+gem 'nested_form_fields'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

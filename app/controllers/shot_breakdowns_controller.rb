@@ -70,6 +70,6 @@ class ShotBreakdownsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shot_breakdown_params
-      params[:shot_breakdown]
+      params.require(:shot_breakdown).permit(:name, :set, :description, layers_attributes:[:layers_id])
     end
 end

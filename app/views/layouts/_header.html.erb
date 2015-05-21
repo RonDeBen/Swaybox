@@ -3,8 +3,9 @@
     <%= link_to "Swaybox", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",   root_path %></li>
         <% if is_admin? %>
+          <li><%= link_to "Plan a Session", arrangements_path %></li>
+          <li><%= link_to "Shot Breakdowns",   shot_breakdowns_path %></li>
           <li><%= link_to "Admin", admin_url %></li>
         <% end %>
         <% if logged_in? %>

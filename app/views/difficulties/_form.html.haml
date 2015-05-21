@@ -1,0 +1,10 @@
+= bootstrap_form_for @difficulty do |f|
+  - if @difficulty.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@difficulty.errors.count, "error")} prohibited this difficulty from being saved:"
+      %ul
+        - @difficulty.errors.full_messages.each do |msg|
+          %li= msg
+  = f.text_field :name, label:"Difficulty Name"
+  .actions
+    = f.submit 'Save', class:"btn btn-info btn-block"

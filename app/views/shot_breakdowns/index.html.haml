@@ -1,19 +1,20 @@
-%h1 Listing shot_breakdowns
-
-%table
+%h1 Wardrobes
+=link_to 'New Shot Breakdown', new_shot_breakdown_path, class: "btn  btn-info btn-block"
+%br/
+%table.table.table-striped.table-bordered.table-hover
   %thead
     %tr
-      %th
-      %th
-      %th
-
+      %th Name
+      %th Set
+      %th Description
+      %th{:colspan => "3"} Commands
   %tbody
-    - @shot_breakdowns.each do |shot_breakdown|
+    - @shot_breakdowns.order('Shot_breakdowns.name asc').each do |breakdown|
       %tr
-        %td= link_to 'Show', shot_breakdown
-        %td= link_to 'Edit', edit_shot_breakdown_path(shot_breakdown)
-        %td= link_to 'Destroy', shot_breakdown, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= breakdown.name
+        %td= breakdown.set
+        %td= breakdown.description
+        %td= link_to 'Edit', edit_shot_breakdown_path(breakdown)
+        %td= link_to 'Destroy', breakdown, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
 
-%br
-
-= link_to 'New Shot breakdown', new_shot_breakdown_path

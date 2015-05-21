@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authorize, only: :index
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   include SessionsHelper
 
   def index
@@ -46,10 +47,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   def login
   end
 
   private 
+
+    def set_user
+      @user = User.find(params[:id])
+    end
 
 	  def user_params
 	      params.require(:user).permit(:name, :email, :password,:password_confirmation)

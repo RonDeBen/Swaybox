@@ -1,0 +1,10 @@
+= form_for @arrangement do |f|
+  - if @arrangement.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@arrangement.errors.count, "error")} prohibited this arrangement from being saved:"
+      %ul
+        - @arrangement.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'

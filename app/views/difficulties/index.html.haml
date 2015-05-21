@@ -1,0 +1,15 @@
+%h1 Difficulties
+=link_to 'New Difficulty', new_difficulty_path, class: "btn  btn-info btn-block"
+%br/
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th Name
+      %th{:colspan => "2"} Commands
+  %tbody
+    - @difficulties.each do |difficulty|
+      %tr
+        %td= difficulty.name
+        %td= link_to 'Edit', edit_difficulty_path(difficulty)
+        %td= link_to 'Destroy', difficulty, method: :delete, data: { confirm: 'Are you sure?' }
+%br/

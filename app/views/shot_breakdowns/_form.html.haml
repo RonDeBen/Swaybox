@@ -1,10 +1,46 @@
-= form_for @shot_breakdown do |f|
+= bootstrap_form_for @shot_breakdown do |f|
   - if @shot_breakdown.errors.any?
     #error_explanation
       %h2= "#{pluralize(@shot_breakdown.errors.count, "error")} prohibited this shot_breakdown from being saved:"
       %ul
         - @shot_breakdown.errors.full_messages.each do |msg|
           %li= msg
+  = f.text_field :name, label:"Name"
+  = f.collection_select :set, Location.order('locations.name asc').all, :id, :name, include_blank:true, label:"Set"
+  = f.text_area :description, label:"Description"
+  = f.nested_fields_for :layers do |ff|
+    = ff.remove_nested_fields_link 'Remove Layer', class: 'btn btn-danger btn-block', role: 'button'
+    = ff.text_field :name, label:"Name"
+    = ff.text_field :seconds, label:"Seconds"
+    = ff.select :takes, 2..10
+    = ff.text_field :transition, label:"Transition"
+    = ff.text_field :cam, label:"Cam"
+    = ff.collection_select :name, Difficulty.order('difficulties.name asc').all, :id, :name, include_blank:true, label:"Difficulty"
+    = ff.nested_fields_for :wide_puppets do |fff|
+      .left= fff.collection_select :name, WidePuppet.order('wide_puppets.name asc').all, :id, :name, include_blank:true, label:"Wide Puppet"
+      .right= fff.remove_nested_fields_link 'Remove Wide Puppet', class: 'btn btn-danger', role: 'button'
+    = ff.add_nested_fields_link :wide_puppets, 'Add Wide Puppet', class: 'btn btn-success btn-block', role: 'button'
 
+    = ff.nested_fields_for :mc_puppets do |fff|
+      .right= fff.remove_nested_fields_link 'Remove Mid-Close Puppet', class: 'btn btn-danger btn-block', role: 'button'
+      .left= fff.collection_select :name, McPuppet.order('mc_puppets.name asc').all, :id, :name, include_blank:true, label:"Mid-Close Puppet"
+    = ff.add_nested_fields_link :mc_puppets, 'Add Mid-Close Puppet', class: 'btn btn-success btn-block', role: 'button'
+  
+    = ff.text_field :PlayOption, label:"Play Option"
+
+    = ff.nested_fields_for :props do |fff|
+      .right= fff.remove_nested_fields_link 'Remove Prop', class: 'btn btn-danger btn-block', role: 'button'
+      .left= fff.collection_select :name, Prop.order('props.name asc').all, :id, :name, include_blank:true, label:"Prop"
+    = ff.add_nested_fields_link :props, 'Add Prop', class: 'btn btn-success btn-block', role: 'button'
+
+    = ff.nested_fields_for :wardrobes do |fff|
+      .right= fff.remove_nested_fields_link 'Remove Wardrobe', class: 'btn btn-danger btn-block', role: 'button'
+      .left= fff.collection_select :name, Wardrobe.order('wardrobes.name asc').all, :id, :name, include_blank:true, label:"Wardrobe"
+    = ff.add_nested_fields_link :wardrobes, 'Add Wardrobe', class: 'btn btn-success btn-block', role: 'button'
+
+    = ff.text_field :tracking, label:"Tracking"
+    = ff.text_field :PColor, label:"PColor"
+    = ff.text_area :notes, label:"Notes"
+  = f.add_nested_fields_link :layers, 'Add Layer', class: 'btn btn-success btn-block', role: 'button'
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class: 'btn btn-info btn-block'

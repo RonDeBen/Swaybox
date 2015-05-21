@@ -6,10 +6,11 @@
         - @layer.errors.full_messages.each do |msg|
           %li= msg
   = f.text_field :name, label:"Name"
-  = f.text_field :time, label:"Time"
+  = f.text_field :seconds, label:"Seconds"
+  = f.select :takes, 2..10
   = f.text_field :transition, label:"Transition"
   = f.text_field :cam, label:"Cam"
-  = f.text_field :difficulty, label:"Difficulty"
+  = f.collection_select :name, Difficulty.order('difficulties.name asc').all, :id, :name, include_blank:true, label:"Difficulty"
   = f.nested_fields_for :wide_puppets do |ff|
     .left= ff.collection_select :name, WidePuppet.order('wide_puppets.name asc').all, :id, :name, include_blank:true, label:"Wide Puppet"
     .right= ff.remove_nested_fields_link 'Remove Wide Puppet', class: 'btn btn-danger', role: 'button'

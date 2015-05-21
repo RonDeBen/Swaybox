@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   get 'admin' => 'admin#index'
-  resources :users, :props, :wardrobes, :mc_puppets, :wide_puppets, :layers, :shot_breakdowns, :movies, :wide_statuses, :mc_statuses, :reg_statuses, :locations
+  resources :users, :props, :wardrobes, :mc_puppets, :wide_puppets, :layers, :shot_breakdowns, :movies, :wide_statuses, :mc_statuses, :reg_statuses, :locations, :arrangements, :difficulties
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

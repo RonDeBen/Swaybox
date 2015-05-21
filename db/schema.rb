@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519150120) do
+ActiveRecord::Schema.define(version: 20150520163528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "arrangements", force: :cascade do |t|
+    t.integer  "shotbreakdown"
+    t.datetime "day"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "controllers", force: :cascade do |t|
     t.string   "McPuppet"
@@ -22,12 +29,17 @@ ActiveRecord::Schema.define(version: 20150519150120) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "difficulties", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "layers", force: :cascade do |t|
     t.string   "name"
-    t.string   "time"
+    t.string   "seconds"
     t.string   "transition"
     t.string   "cam"
-    t.string   "difficulty"
     t.integer  "WidePuppet"
     t.integer  "MidClosePuppet"
     t.string   "PlayOption"
@@ -38,6 +50,8 @@ ActiveRecord::Schema.define(version: 20150519150120) do
     t.text     "notes"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "difficulty"
+    t.integer  "takes"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -85,6 +99,7 @@ ActiveRecord::Schema.define(version: 20150519150120) do
     t.integer  "set"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "name"
   end
 
   create_table "users", force: :cascade do |t|

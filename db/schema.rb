@@ -102,7 +102,6 @@ ActiveRecord::Schema.define(version: 20150605044703) do
     t.string   "title"
     t.integer  "set"
     t.text     "description"
-    t.integer  "layers"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

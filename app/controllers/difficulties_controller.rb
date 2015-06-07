@@ -28,7 +28,7 @@ class DifficultiesController < ApplicationController
 
     respond_to do |format|
       if @difficulty.save
-        format.html { redirect_to @difficulty, notice: 'Difficulty was successfully created.' }
+        format.html { redirect_to action: "index", notice: 'Difficulty was successfully created.' }
         format.json { render :show, status: :created, location: @difficulty }
       else
         format.html { render :new }

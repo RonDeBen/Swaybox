@@ -1,4 +1,4 @@
 class McPuppet < ActiveRecord::Base
 	#relationships
-	belongs_to :layer
+	has_and_belongs_to_many :layers
 end

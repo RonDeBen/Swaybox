@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  Layers: 1
-  description: MyText
+  title: MyString
   set: 1
+  description: MyText
+  layers: 1
 
 two:
-  Layers: 1
-  description: MyText
+  title: MyString
   set: 1
+  description: MyText
+  layers: 1

@@ -8,4 +8,4 @@
   = f.text_field :name, label:"Name"
   = f.collection_select :status, RegStatus.all, :id,:stage,include_blank:true
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class: 'btn btn-info btn-block'

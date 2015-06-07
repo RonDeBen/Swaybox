@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  layer_id: 1
+  wide_puppet_id: 1
+  mc_puppet_id: 1
+  prop_id: 1
+
+two:
+  layer_id: 1
+  wide_puppet_id: 1
+  mc_puppet_id: 1
+  prop_id: 1

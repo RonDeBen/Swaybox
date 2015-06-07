@@ -1,4 +1,4 @@
-%h1 Wardrobes
+%h1 Shot Breakdowns
 =link_to 'New Shot Breakdown', new_shot_breakdown_path, class: "btn  btn-info btn-block"
 %br/
 %table.table.table-striped.table-bordered.table-hover
@@ -9,9 +9,9 @@
       %th Description
       %th{:colspan => "3"} Commands
   %tbody
-    - @shot_breakdowns.order('Shot_breakdowns.name asc').each do |breakdown|
+    - @shot_breakdowns.order('Shot_breakdowns.title asc').each do |breakdown|
       %tr
-        %td= breakdown.name
+        %td= breakdown.title
         %td= breakdown.set
         %td= breakdown.description
         %td= link_to 'Edit', edit_shot_breakdown_path(breakdown)

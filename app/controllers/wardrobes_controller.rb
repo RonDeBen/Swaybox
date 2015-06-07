@@ -8,6 +8,9 @@ class WardrobesController < ApplicationController
     @wardrobes = Wardrobe.all
   end
 
+  def id
+    @wardrobe.id
+  end
   # GET /wardrobes/1
   # GET /wardrobes/1.json
   def show

@@ -1,31 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  time: MyString
-  transition: MyString
-  cam: MyString
-  difficulty: MyString
-  WidePuppet: 1
-  MidClosePuppet: 1
-  PlayOption: MyString
-  props: 1
-  wardrobe: 1
-  tracking: MyString
-  PColor: MyString
-  notes: MyText
-
-two:
-  name: MyString
-  time: MyString
-  transition: MyString
-  cam: MyString
-  difficulty: MyString
-  WidePuppet: 1
-  MidClosePuppet: 1
-  PlayOption: MyString
-  props: 1
-  wardrobe: 1
-  tracking: MyString
-  PColor: MyString
-  notes: MyText
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+#  column: value

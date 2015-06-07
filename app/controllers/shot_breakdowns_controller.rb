@@ -20,6 +20,7 @@ class ShotBreakdownsController < ApplicationController
 
   # GET /shot_breakdowns/1/edit
   def edit
+    @shot_breakdown = ShotBreakdown.find(params[:id])
   end
 
   # POST /shot_breakdowns
@@ -70,6 +71,6 @@ class ShotBreakdownsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shot_breakdown_params
-      params.require(:shot_breakdown).permit(:name, :set, :description, :layers_attributes => [:id,:_destroy,:id])
+      params.require(:shot_breakdown).permit(:title, :set, :description, { layers_attributes: [:title, :seconds, :takes, :transition, :cam, :difficulty, { wide_puppets_attributes: [:id] }, { mc_puppets_attributes: [:id] }, :play_option, { props_attributes: [:id] }, :wardrobe, :tracking, :pcolor, :notes, :id, :_destroy] }, :id)
     end
 end

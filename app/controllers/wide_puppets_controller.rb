@@ -32,7 +32,7 @@ class WidePuppetsController < ApplicationController
 
     respond_to do |format|
       if @wide_puppet.save
-        format.html { redirect_to @wide_puppet, notice: 'Wide puppet was successfully created.' }
+        format.html { redirect_to action: "index", notice: 'Wide puppet was successfully created.' }
         format.json { render :show, status: :created, location: @wide_puppet }
       else
         format.html { render :new }

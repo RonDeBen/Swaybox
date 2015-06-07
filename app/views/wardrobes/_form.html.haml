@@ -1,16 +1,11 @@
-= bootstrap_form_for(@user) do |f|
-  - if @user.errors.any?
+= bootstrap_form_for(@wardrobe) do |f|
+  - if @wardrobe.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+      %h2= "#{pluralize(@wardrobe.errors.count, "error")} prohibited this wardrobe from being saved:"
       %ul
-        - @user.errors.full_messages.each do |msg|
+        - @wardrobe.errors.full_messages.each do |msg|
           %li= msg
   = f.text_field :name, label:"Name"
-  = f.email_field :email, label:"Email"
-  = f.password_field :password
-  = f.password_field :password_confirmation, label:"Password Confirmation"
-  - if is_admin?
-    = f.check_box :is_admin, label:"Is Admin"
-  = f.submit "Update Account", class: "btn btn-primary"
+  = f.collection_select :status, RegStatus.all, :id,:stage,include_blank:true
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class: 'btn btn-info btn-block'

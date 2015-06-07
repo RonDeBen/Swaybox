@@ -12,24 +12,26 @@ class Layer < ActiveRecord::Base
 
   def wide_puppets_attributes=(attributes)
     attributes.each_pair do |k, v|
-      if v['id'].present? && !self.wide_puppets.exists?(v[:id])
-        self.wide_puppets << WidePuppet.find(v[:id])
+      if v['id'].present? 
+        self.wide_puppets << WidePuppet.find(v[:id]) unless v[:_destroy] == "1" || self.wide_puppets.exists?(v[:id])
       end
     end
   end
 
   def mc_puppets_attributes=(attributes)
+    self.mc_puppets = []
     attributes.each_pair do |k, v|
-      if v['id'].present? && !self.mc_puppets.exists?(v[:id])
-        self.mc_puppets << McPuppet.find(v[:id])
+      if v['id'].present? 
+        self.mc_puppets << McPuppet.find(v[:id]) unless v[:_destroy] == "1" || self.mc_puppets.exists?(v[:id])
       end
     end
   end
 
   def props_attributes=(attributes)
+    self.props = []
     attributes.each_pair do |k, v|
-      if v['id'].present? && !self.props.exists?(v[:id])
-        self.props << Prop.find(v[:id])
+      if v['id'].present? 
+        self.props << Prop.find(v[:id]) unless v[:_destroy] == "1" || self.props.exists?(v[:id])
       end
     end
   end

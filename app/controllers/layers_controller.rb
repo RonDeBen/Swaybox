@@ -20,20 +20,16 @@ class LayersController < ApplicationController
 
   # GET /layers/1/edit
   def edit
-    @layer.mc_puppets.delete_all
-    @layer.wide_puppets.delete_all
-    @layer.props.delete_all
   end
 
   # POST /layers
   # POST /layers.json
   def create
     @layer = Layer.new(layer_params)
-
     respond_to do |format|
       if @layer.save
         format.html { redirect_to @layer, notice: 'Layer was successfully created.' }
-        format.json { render :json, status: :created, location: @layer }
+        format.json { render :show, status: :created, location: @layer }
       else
         format.html { render :new }
         format.json { render json: @layer.errors, status: :unprocessable_entity }
@@ -73,6 +69,6 @@ class LayersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def layer_params
-      params.require(:layer).permit(:title, :seconds, :takes, :transition, :cam, :difficulty, { wide_puppets_attributes: [:id] }, { mc_puppets_attributes: [:id] }, :play_option, { props_attributes: [:id] }, :wardrobe, :tracking, :pcolor, :notes, :id)
+      params.require(:layer).permit(:title, :seconds, :takes, :transition, :cam, :difficulty, { wide_puppets_attributes: [:id, :_destroy] }, { mc_puppets_attributes: [:id, :_destroy] }, :play_option, { props_attributes: [:id, :_destroy] }, :wardrobe, :tracking, :pcolor, :notes, :shot_breakdown_id)
     end
 end

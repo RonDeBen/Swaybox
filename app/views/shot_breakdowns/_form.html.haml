@@ -9,6 +9,7 @@
   = f.collection_select :set, Location.order('locations.name asc').all, :id, :name, include_blank:true, label:"Set"
   = f.text_area :description, label:"Description"
   = f.nested_fields_for :layers do |ff|
+    = ff.remove_nested_fields_link 'Remove Layer', class: 'btn btn-danger btn-block', role: 'button'
     = ff.text_field :title, label:"Name"
     = ff.text_field :seconds, label:"Seconds"
     = ff.select :takes, 2..10

@@ -12,7 +12,7 @@
     - @shot_breakdowns.order('Shot_breakdowns.title asc').each do |breakdown|
       %tr
         %td= breakdown.title
-        %td= breakdown.set
+        %td= Location.find_by(id: breakdown.set).name unless Location.find_by(id: breakdown.set) == nil
         %td= breakdown.description
         %td= link_to 'Edit', edit_shot_breakdown_path(breakdown)
         %td= link_to 'Destroy', breakdown, method: :delete, data: { confirm: 'Are you sure?' }

@@ -3,7 +3,7 @@
 .col-md-4
   - set = Location.find_by(id: @shot_breakdown.set).name unless Location.find_by(id: @shot_breakdown.set).blank?
   = "Set: #{set}"
-.col-md-4
+.col-md-8
   = "Description: #{@shot_breakdown.description}"
 %table.table.table-striped.table-bordered.table-hover
   %thead
@@ -28,10 +28,19 @@
         %td= "time formula goes here"
         %td= layer.transition
         %td= layer.cam
-        %td= "wide puppets"
-        %td= "mc puppets"
+        - wide_pups = ""
+        - layer.wide_puppets.each do |puppet|
+          - wide_pups << "#{puppet.name}\n"
+        %td= wide_pups
+        - mc_pups = ""
+        - layer.mc_puppets.each do |puppet|
+          - mc_pups << "#{puppet.name}\n"
+        %td= mc_pups
         %td= layer.play_option
-        %td= "props"
+        - props = ""
+        - layer.props.each do |prop|
+          - props << "#{prop.name}\n"
+        %td= props
         - wardrobe = Wardrobe.find_by(id: layer.wardrobe).name unless Wardrobe.find_by(id: layer.wardrobe).blank?
         %td= wardrobe
         %td= layer.tracking
@@ -81,8 +90,8 @@
         - @incomplete_wide_puppets.each do |puppet|
           %tr
             %td= puppet.name
-          / - status = WideStatus.find_by(id: puppet.status).stage unless WideStatus.find_by(id: puppet.status).blank?
-          / %td= status
+            - status = WideStatus.find_by(id: puppet.status).stage unless WideStatus.find_by(id: puppet.status).blank?
+            %td= status
 
   - unless @incomplete_mc_puppets.empty?
     %table.table.table-striped.table-bordered.table-hover
@@ -94,8 +103,8 @@
         - @incomplete_mc_puppets.each do |puppet|
           %tr
             %td= puppet.name
-          / - status = McStatus.find_by(id: puppet.status).stage unless McStatus.find_by(id: puppet.status).blank?
-          / %td= status
+            - status = McStatus.find_by(id: puppet.status).stage unless McStatus.find_by(id: puppet.status).blank?
+            %td= status
 
   - unless @incomplete_props.empty?
     %table.table.table-striped.table-bordered.table-hover
@@ -107,7 +116,7 @@
         - @incomplete_props.each do |prop|
           %tr
             %td= prop.name
-          / - status = RegStatus.find_by(id: prop.status).stage unless RegStatus.find_by(id: prop.status).blank?
-          / %td= status
+            - status = RegStatus.find_by(id: prop.status).stage unless RegStatus.find_by(id: prop.status).blank?
+            %td= status
 
 = link_to 'Back', shot_breakdowns_path

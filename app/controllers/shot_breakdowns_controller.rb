@@ -20,15 +20,21 @@ class ShotBreakdownsController < ApplicationController
     @incomplete_wide_puppets = []
     @incomplete_mc_puppets = [] 
     @incomplete_props = []
-    
+
     @layers.each do |layer|
-      @complete_wide_puppets << layer.wide_puppets.where(id: WideStatus.find_by(stage: 'Completed').id) unless layer.wide_puppets.where(id: WideStatus.find_by(stage: 'Completed').id.blank?) 
-      @complete_mc_puppets << layer.mc_puppets.where(id: McStatus.find_by(stage: 'Completed').id) unless layer.mc_puppets.where(id: McStatus.find_by(stage: 'Completed').id).blank?  
-      @complete_props << layer.props.where(id: RegStatus.find_by(stage: 'Completed').id) unless layer.props.where(id: RegStatus.find_by(stage: 'Completed').id).blank?  
-      @incomplete_wide_puppets << layer.wide_puppets.where.not(id: WideStatus.find_by(stage: 'Completed').id) unless layer.wide_puppets.where.not(id: WideStatus.find_by(stage: 'Completed').id).blank?  
-      @incomplete_mc_puppets << layer.mc_puppets.where.not(id: McStatus.find_by(stage: 'Completed').id) unless layer.mc_puppets.where.not(id: McStatus.find_by(stage: 'Completed').id).blank?  
-      @incomplete_props << layer.props.where.not(id: RegStatus.find_by(stage: 'Completed').id) unless layer.props.where.not(id: RegStatus.find_by(stage: 'Completed').id).blank?  
+      @complete_wide_puppets << layer.wide_puppets.where(status: WideStatus.find_by(stage: 'Completed').id) unless layer.wide_puppets.where(status: WideStatus.find_by(stage: 'Completed').id.blank?) 
+      @complete_mc_puppets << layer.mc_puppets.where(status: McStatus.find_by(stage: 'Completed').id) unless layer.mc_puppets.where(status: McStatus.find_by(stage: 'Completed').id).blank?  
+      @complete_props << layer.props.where(status: RegStatus.find_by(stage: 'Completed').id) unless layer.props.where(status: RegStatus.find_by(stage: 'Completed').id).blank?  
+      @incomplete_wide_puppets << layer.wide_puppets.where.not(status: WideStatus.find_by(stage: 'Completed').id) unless layer.wide_puppets.where.not(status: WideStatus.find_by(stage: 'Completed').id).blank?  
+      @incomplete_mc_puppets << layer.mc_puppets.where.not(status: McStatus.find_by(stage: 'Completed').id) unless layer.mc_puppets.where.not(status: McStatus.find_by(stage: 'Completed').id).blank?  
+      @incomplete_props << layer.props.where.not(status: RegStatus.find_by(stage: 'Completed').id) unless layer.props.where.not(status: RegStatus.find_by(stage: 'Completed').id).blank?  
     end
+    @complete_wide_puppets = @complete_wide_puppets.flatten
+    @complete_mc_puppets = @complete_mc_puppets.flatten 
+    @complete_props = @complete_props.flatten
+    @incomplete_wide_puppets = @incomplete_wide_puppets.flatten
+    @incomplete_mc_puppets = @incomplete_mc_puppets.flatten 
+    @incomplete_props = @incomplete_props.flatten
   end
 
   # GET /shot_breakdowns/new

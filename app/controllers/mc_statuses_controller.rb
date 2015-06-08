@@ -29,7 +29,7 @@ class McStatusesController < ApplicationController
 
     respond_to do |format|
       if @mc_status.save
-        format.html { redirect_to @mc_status, notice: 'Mc status was successfully created.' }
+        format.html { redirect_to action: "index", notice: 'Mc status was successfully created.' }
         format.json { render :show, status: :created, location: @mc_status }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class McStatusesController < ApplicationController
   def update
     respond_to do |format|
       if @mc_status.update(mc_status_params)
-        format.html { redirect_to @mc_status, notice: 'Mc status was successfully updated.' }
+        format.html { redirect_to action: "index", notice: 'Mc status was successfully updated.' }
         format.json { render :show, status: :ok, location: @mc_status }
       else
         format.html { render :edit }

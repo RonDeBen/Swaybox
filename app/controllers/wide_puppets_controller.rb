@@ -46,7 +46,7 @@ class WidePuppetsController < ApplicationController
   def update
     respond_to do |format|
       if @wide_puppet.update(wide_puppet_params)
-        format.html { redirect_to @wide_puppet, notice: 'Wide puppet was successfully updated.' }
+        format.html { redirect_to action: "index", notice: 'Wide puppet was successfully updated.' }
         format.json { render :show, status: :ok, location: @wide_puppet }
       else
         format.html { render :edit }

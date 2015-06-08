@@ -29,7 +29,7 @@ class WideStatusesController < ApplicationController
 
     respond_to do |format|
       if @wide_status.save
-        format.html { redirect_to @wide_status, notice: 'Wide status was successfully created.' }
+        format.html { redirect_to action: "index", notice: 'Wide status was successfully created.' }
         format.json { render :show, status: :created, location: @wide_status }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class WideStatusesController < ApplicationController
   def update
     respond_to do |format|
       if @wide_status.update(wide_status_params)
-        format.html { redirect_to @wide_status, notice: 'Wide status was successfully updated.' }
+        format.html { redirect_to action: "index", notice: 'Wide status was successfully updated.' }
         format.json { render :show, status: :ok, location: @wide_status }
       else
         format.html { render :edit }

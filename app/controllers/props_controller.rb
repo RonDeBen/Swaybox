@@ -29,7 +29,7 @@ class PropsController < ApplicationController
 
     respond_to do |format|
       if @prop.save
-        format.html { redirect_to @prop, notice: 'Prop was successfully created.' }
+        format.html { redirect_to action: "index", notice: 'Prop was successfully created.' }
         format.json { render :show, status: :created, location: @prop }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class PropsController < ApplicationController
   def update
     respond_to do |format|
       if @prop.update(prop_params)
-        format.html { redirect_to @prop, notice: 'Prop was successfully updated.' }
+        format.html { redirect_to action: "index", notice: 'Prop was successfully updated.' }
         format.json { render :show, status: :ok, location: @prop }
       else
         format.html { render :edit }

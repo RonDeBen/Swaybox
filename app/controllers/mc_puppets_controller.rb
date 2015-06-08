@@ -29,7 +29,7 @@ class McPuppetsController < ApplicationController
 
     respond_to do |format|
       if @mc_puppet.save
-        format.html { redirect_to @mc_puppet, notice: 'Mc puppet was successfully created.' }
+        format.html { redirect_to action: "index", notice: 'Mc puppet was successfully created.' }
         format.json { render :show, status: :created, location: @mc_puppet }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class McPuppetsController < ApplicationController
   def update
     respond_to do |format|
       if @mc_puppet.update(mc_puppet_params)
-        format.html { redirect_to @mc_puppet, notice: 'Mc puppet was successfully updated.' }
+        format.html { redirect_to action: "index", notice: 'Mc puppet was successfully updated.' }
         format.json { render :show, status: :ok, location: @mc_puppet }
       else
         format.html { render :edit }

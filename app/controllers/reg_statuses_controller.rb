@@ -29,7 +29,7 @@ class RegStatusesController < ApplicationController
 
     respond_to do |format|
       if @reg_status.save
-        format.html { redirect_to @reg_status, notice: 'Reg status was successfully created.' }
+        format.html { redirect_to action: "index", notice: 'Reg status was successfully created.' }
         format.json { render :show, status: :created, location: @reg_status }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class RegStatusesController < ApplicationController
   def update
     respond_to do |format|
       if @reg_status.update(reg_status_params)
-        format.html { redirect_to @reg_status, notice: 'Reg status was successfully updated.' }
+        format.html { redirect_to action: "index", notice: 'Reg status was successfully updated.' }
         format.json { render :show, status: :ok, location: @reg_status }
       else
         format.html { render :edit }

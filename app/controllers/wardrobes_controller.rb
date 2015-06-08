@@ -32,7 +32,7 @@ class WardrobesController < ApplicationController
 
     respond_to do |format|
       if @wardrobe.save
-        format.html { redirect_to @wardrobe, notice: 'Wardrobe was successfully created.' }
+        format.html { redirect_to action: "index", notice: 'Wardrobe was successfully created.' }
         format.json { render :show, status: :created, location: @wardrobe }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class WardrobesController < ApplicationController
   def update
     respond_to do |format|
       if @wardrobe.update(wardrobe_params)
-        format.html { redirect_to @wardrobe, notice: 'Wardrobe was successfully updated.' }
+        format.html { redirect_to action: "index", notice: 'Wardrobe was successfully updated.' }
         format.json { render :show, status: :ok, location: @wardrobe }
       else
         format.html { render :edit }

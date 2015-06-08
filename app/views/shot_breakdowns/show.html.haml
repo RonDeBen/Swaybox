@@ -1,6 +1,107 @@
-%p#notice= notice
 %h1= @shot_breakdown.title
 
-= link_to 'Edit', edit_shot_breakdown_path(@shot_breakdown)
-\|
+.col-md-4
+  - set = Location.find_by(id: @shot_breakdown.set).name unless Location.find_by(id: @shot_breakdown.set).blank?
+  = "Set: #{set}"
+.col-md-4
+  = "Description: #{@shot_breakdown.description}"
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th Name
+      %th Time
+      %th Transition
+      %th Cam
+      %th W Puppets
+      %th MC Puppets
+      %th Play Option
+      %th Props
+      %th Wardrobe
+      %th Tracking
+      %th P Color
+      %th Notes
+      %th{ :colspan => '3'} Commands
+  %tbody
+    - @layers.each do |layer| 
+      %tr 
+        %td= layer.title
+        %td= "time formula goes here"
+        %td= layer.transition
+        %td= layer.cam
+        %td= "wide puppets"
+        %td= "mc puppets"
+        %td= layer.play_option
+        %td= "props"
+        - wardrobe = Wardrobe.find_by(id: layer.wardrobe).name unless Wardrobe.find_by(id: layer.wardrobe).blank?
+        %td= wardrobe
+        %td= layer.tracking
+        %td= layer.pcolor
+        %td= layer.notes
+        %td= link_to 'Edit', edit_layer_path(layer), class: 'btn btn-warning btn-block'
+        %td= link_to 'Destroy', layer, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block'
+= link_to 'Add Layer', add_layer_shot_breakdown_path, class: 'btn btn-success btn-block'
+
+.row-md-4
+- unless @complete_wide_puppets.blank?
+  %table.table.table-striped.table-bordered.table-hover
+    %tr
+      %th Complete Wide Puppets
+  %tbody
+    - @complete_wide_puppets.each do |puppet|
+      %tr
+        %td= puppet.name
+- unless @complete_mc_puppets.blank?
+  %table.table.table-striped.table-bordered.table-hover
+    %tr
+      %th Complete Mid-Close Puppets
+  %tbody
+    - @complete_mc_puppets.each do |puppet|
+      %tr
+        %td= puppet.name
+- unless @complete_props.blank?
+  %table.table.table-striped.table-bordered.table-hover
+    %tr
+      %th Complete Props
+  %tbody
+    - @complete_props.each do |prop|
+      %tr
+        %td= prop.name
+
+.row-md-8
+- unless @incomplete_wide_puppets.blank?
+  %table.table.table-striped.table-bordered.table-hover
+    %tr
+      %th Incomplete Wide Puppets
+      %th Status
+  %tbody
+    - @incomplete_wide_puppets.each do |puppet|
+      %tr
+        %td= puppet.name
+        - status = WideStatus.find_by(id: puppet.status).stage unless WideStatus.find_by(id: puppet.status).blank?
+        %td= status
+
+- unless @incomplete_wide_puppets.blank?
+  %table.table.table-striped.table-bordered.table-hover
+    %tr
+      %th Incomplete Mid-Close Puppets
+      %th Status
+  %tbody
+    - @incomplete_mc_puppets.each do |puppet|
+      %tr
+        %td= puppet.name
+        - status = McStatus.find_by(id: puppet.status).stage unless McStatus.find_by(id: puppet.status).blank?
+        %td= status
+
+- unless @incomplete_props.blank?
+  %table.table.table-striped.table-bordered.table-hover
+    %tr
+      %th Incomplete Props
+      %th Status
+  %tbody
+    - @incomplete_props.each do |prop|
+      %tr
+        %td= prop.name
+        - status = RegStatus.find_by(id: prop.status).stage unless RegStatus.find_by(id: prop.status).blank?
+        %td= status
+
 = link_to 'Back', shot_breakdowns_path

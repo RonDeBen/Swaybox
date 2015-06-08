@@ -10,6 +10,6 @@
     - @wide_statuses.each do |status|
       %tr
         %td= status.stage
-        %td= link_to 'Edit', edit_wide_status_path(status)
-        %td= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Edit', edit_wide_status_path(status), class: "btn btn-warning btn-block"
+        %td= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-block"
 %br/

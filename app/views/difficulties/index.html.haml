@@ -10,6 +10,6 @@
     - @difficulties.each do |difficulty|
       %tr
         %td= difficulty.name
-        %td= link_to 'Edit', edit_difficulty_path(difficulty)
-        %td= link_to 'Destroy', difficulty, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Edit', edit_difficulty_path(difficulty), class: "btn btn-warning btn-block"
+        %td= link_to 'Destroy', difficulty, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-block"
 %br/

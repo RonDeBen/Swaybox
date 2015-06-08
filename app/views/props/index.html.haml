@@ -12,6 +12,6 @@
       %tr
         %td= prop.name
         %td= RegStatus.find_by(id: prop.status).stage
-        %td= link_to 'Edit', edit_prop_path(prop)
-        %td= link_to 'Destroy', prop, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Edit', edit_prop_path(prop), class: "btn btn-warning btn-block"
+        %td= link_to 'Destroy', prop, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-block"
 %br/

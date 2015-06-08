@@ -28,7 +28,7 @@ class LayersController < ApplicationController
     @layer = Layer.new(layer_params)
     respond_to do |format|
       if @layer.save
-        format.html { redirect_to @layer, notice: 'Layer was successfully created.' }
+        format.html { redirect_to ShotBreakdown.find_by(id: @layer.shot_breakdown_id), notice: 'Layer was successfully created.' }
         format.json { render :show, status: :created, location: @layer }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class LayersController < ApplicationController
   def update
     respond_to do |format|
       if @layer.update(layer_params)
-        format.html { redirect_to @layer, notice: 'Layer was successfully updated.' }
+        format.html { redirect_to ShotBreakdown.find_by(id: @layer.shot_breakdown_id), notice: 'Layer was successfully updated.' }
         format.json { render :json, status: :ok, location: @layer }
       else
         format.html { render :edit }
@@ -54,9 +54,10 @@ class LayersController < ApplicationController
   # DELETE /layers/1
   # DELETE /layers/1.json
   def destroy
+    @shot_breakdown = ShotBreakdown.find_by(id: @layer.shot_breakdown_id)
     @layer.destroy
     respond_to do |format|
-      format.html { redirect_to layers_url, notice: 'Layer was successfully destroyed.' }
+      format.html { redirect_to @shot_breakdown, notice: 'Layer was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

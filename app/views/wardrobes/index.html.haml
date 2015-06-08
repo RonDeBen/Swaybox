@@ -12,6 +12,6 @@
       %tr
         %td= drobe.name
         %td= RegStatus.find_by(id: drobe.status).stage
-        %td= link_to 'Edit', edit_wardrobe_path(drobe)
-        %td= link_to 'Destroy', drobe, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Edit', edit_wardrobe_path(drobe), class: "btn btn-warning btn-block"
+        %td= link_to 'Destroy', drobe, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-block"
 %br/

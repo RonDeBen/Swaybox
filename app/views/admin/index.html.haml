@@ -1,44 +1,43 @@
 %h1 Administration
 .center-block
-  .row
-    .col-md-4
-      .panel.panel-primary
-        .panel-heading
-          %h3 Admin
-        .panel-body
-          %ul.list-group
-            %li.list-group-item
-              = link_to 'Manage Users', users_path
-            %li.list-group-item
-              = link_to 'Manage Difficulties', difficulties_path  
-            %li.list-group-item
-              = link_to 'Manage Mid-Close Statuses', mc_statuses_path
-            %li.list-group-item
-              = link_to 'Manage Wide Statuses', wide_statuses_path
-            %li.list-group-item
-              = link_to 'Manage Regular Statuses', reg_statuses_path
-            
-    .col-md-4
-      .panel.panel-primary
-        .panel-heading
-          %h3 Assets
-        .panel-body
-          %ul.list-group
-            %li.list-group-item
-              = link_to 'Manage Movies', movies_path
-            %li.list-group-item
-              = link_to 'Manage Props', props_path
-            %li.list-group-item
-              = link_to 'Manage Sets', locations_path
-            %li.list-group-item
-              = link_to 'Manage Wardrobe', wardrobes_path
-    .col-md-4
-      .panel.panel-primary
-        .panel-heading
-          %h3 Puppets
-        .panel-body
-          %ul.list-group
-            %li.list-group-item
-              = link_to 'Manage Mid-Close Puppets', mc_puppets_path
-            %li.list-group-item
-              = link_to 'Manage Wide Puppets', wide_puppets_path
+  .center
+    .row
+      .col-md-4
+        .panel.panel-primary
+          .panel-heading
+            %h3 Admin
+          .panel-body
+            %ul.list-group
+              %li.list-group-item
+                = link_to 'Manage Users', users_path
+              %li.list-group-item
+                = link_to 'Manage Difficulties', difficulties_path  
+              %li.list-group-item
+                = link_to 'Manage Mid-Close Statuses', mc_statuses_path
+              %li.list-group-item
+                = link_to 'Manage Wide Statuses', wide_statuses_path
+              %li.list-group-item
+                = link_to 'Manage Regular Statuses', reg_statuses_path
+              
+      .col-md-4
+        .panel.panel-primary
+          .panel-heading
+            %h3 Assets
+          .panel-body
+            %ul.list-group
+              %li.list-group-item
+                = link_to 'Manage Props', props_path
+              %li.list-group-item
+                = link_to 'Manage Sets', locations_path
+              %li.list-group-item
+                = link_to 'Manage Wardrobe', wardrobes_path
+      .col-md-4
+        .panel.panel-primary
+          .panel-heading
+            %h3 Puppets
+          .panel-body
+            %ul.list-group
+              %li.list-group-item
+                = link_to 'Manage Mid-Close Puppets', mc_puppets_path
+              %li.list-group-item
+                = link_to 'Manage Wide Puppets', wide_puppets_path

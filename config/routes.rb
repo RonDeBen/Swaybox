@@ -8,7 +8,19 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   get 'admin' => 'admin#index'
-  resources :users, :props, :wardrobes, :mc_puppets, :wide_puppets, :layers, :shot_breakdowns, :movies, :wide_statuses, :mc_statuses, :reg_statuses, :locations, :arrangements, :difficulties
+
+  resources :shot_breakdowns do
+    member do 
+      get 'add_layer', :action => 'add_layer'
+    end 
+  end
+
+  resources :layers, only: [:new, :edit, :destroy]
+
+  resources :arrangements
+
+  resources :users, :props, :wardrobes, :mc_puppets, :wide_puppets, :wide_statuses, :mc_statuses, :reg_statuses, :locations, :difficulties, only: [:index, :new, :create, :edit, :update, :destroy]
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

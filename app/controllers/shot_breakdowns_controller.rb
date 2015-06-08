@@ -11,6 +11,22 @@ class ShotBreakdownsController < ApplicationController
   # GET /shot_breakdowns/1
   # GET /shot_breakdowns/1.json
   def show
+    @shot_breakdown = ShotBreakdown.find(params[:id])
+    @layers = Layer.where(shot_breakdown_id: @shot_breakdown.id)
+    @complete_wide_puppets = []
+    @complete_mc_puppets = [] 
+    @complete_props = []
+    @incomplete_wide_puppets = []
+    @incomplete_mc_puppets = [] 
+    @incomplete_props = []
+    @layers.each do |layer|
+      @complete_wide_puppets << layer.wide_puppets.where(id: WideStatus.find_by(stage: 'Completed').id) unless layer.wide_puppets.where(id: WideStatus.find_by(stage: 'Completed').id.blank?) 
+      @complete_mc_puppets << layer.mc_puppets.where(id: McStatus.find_by(stage: 'Completed').id) unless layer.mc_puppets.where(id: McStatus.find_by(stage: 'Completed').id).blank?  
+      @complete_props << layer.props.where(id: RegStatus.find_by(stage: 'Completed').id) unless layer.props.where(id: RegStatus.find_by(stage: 'Completed').id).blank?  
+      @incomplete_wide_puppets << layer.wide_puppets.where.not(id: WideStatus.find_by(stage: 'Completed').id) unless layer.wide_puppets.where.not(id: WideStatus.find_by(stage: 'Completed').id).blank?  
+      @incomplete_mc_puppets << layer.mc_puppets.where.not(id: McStatus.find_by(stage: 'Completed').id) unless layer.mc_puppets.where.not(id: McStatus.find_by(stage: 'Completed').id).blank?  
+      @incomplete_props << layer.props.where.not(id: RegStatus.find_by(stage: 'Completed').id) unless layer.props.where.not(id: RegStatus.find_by(stage: 'Completed').id).blank?  
+    end
   end
 
   # GET /shot_breakdowns/new
@@ -21,8 +37,13 @@ class ShotBreakdownsController < ApplicationController
   # GET /shot_breakdowns/1/edit
   def edit
     @shot_breakdown = ShotBreakdown.find(params[:id])
+    @layers = Layer.where(shot_breakdown_id: @shot_breakdown.id)
   end
 
+  def add_layer
+    @shot_breakdown = ShotBreakdown.find(params[:id])
+    @layer = Layer.create(shot_breakdown_id: @shot_breakdown.id)
+  end
   # POST /shot_breakdowns
   # POST /shot_breakdowns.json
   def create

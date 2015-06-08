@@ -10,9 +10,9 @@
   %tbody
     - @arrangements.each do |arrangement|
       %tr
-        %td= link_to 'Show', arrangement
-        %td= link_to 'Edit', edit_arrangement_path(arrangement)
-        %td= link_to 'Destroy', arrangement, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Show', arrangement, class: "btn btn-primary btn-block"
+        %td= link_to 'Edit', edit_arrangement_path(arrangement), class: "btn btn-warning btn-block"
+        %td= link_to 'Destroy', arrangement, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-danger btn-block"
 
 %br
 

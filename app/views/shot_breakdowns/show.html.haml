@@ -41,67 +41,73 @@
         %td= link_to 'Destroy', layer, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block'
 = link_to 'Add Layer', add_layer_shot_breakdown_path, class: 'btn btn-success btn-block'
 
-.row-md-4
-- unless @complete_wide_puppets.blank?
-  %table.table.table-striped.table-bordered.table-hover
-    %tr
-      %th Complete Wide Puppets
-  %tbody
-    - @complete_wide_puppets.each do |puppet|
-      %tr
-        %td= puppet.name
-- unless @complete_mc_puppets.blank?
-  %table.table.table-striped.table-bordered.table-hover
-    %tr
-      %th Complete Mid-Close Puppets
-  %tbody
-    - @complete_mc_puppets.each do |puppet|
-      %tr
-        %td= puppet.name
-- unless @complete_props.blank?
-  %table.table.table-striped.table-bordered.table-hover
-    %tr
-      %th Complete Props
-  %tbody
-    - @complete_props.each do |prop|
-      %tr
-        %td= prop.name
+.col-md-4
+  - unless @complete_wide_puppets.empty?
+    %table.table.table-striped.table-bordered.table-hover
+      %thead
+        %tr
+          %th Complete Wide Puppets
+      %tbody
+        - @complete_wide_puppets.each do |puppet|
+          %tr
+            %td= puppet.name
+  - unless @complete_mc_puppets.empty?
+    %table.table.table-striped.table-bordered.table-hover
+      %thead
+        %tr
+          %th Complete Mid-Close Puppets
+      %tbody
+        - @complete_mc_puppets.each do |puppet|
+          %tr
+            %td= puppet.name
+  - unless @complete_props.empty?
+    %table.table.table-striped.table-bordered.table-hover
+      %thead
+        %tr
+          %th Complete Props
+      %tbody
+        - @complete_props.each do |prop|
+          %tr
+            %td= prop.name
 
-.row-md-8
-- unless @incomplete_wide_puppets.blank?
-  %table.table.table-striped.table-bordered.table-hover
-    %tr
-      %th Incomplete Wide Puppets
-      %th Status
-  %tbody
-    - @incomplete_wide_puppets.each do |puppet|
-      %tr
-        %td= puppet.name
-        - status = WideStatus.find_by(id: puppet.status).stage unless WideStatus.find_by(id: puppet.status).blank?
-        %td= status
+.col-md-8
+  - unless @incomplete_wide_puppets.empty?
+    %table.table.table-striped.table-bordered.table-hover
+      %thead
+        %tr
+          %th Incomplete Wide Puppets
+          %th Status
+      %tbody
+        - @incomplete_wide_puppets.each do |puppet|
+          %tr
+            %td= puppet.name
+          / - status = WideStatus.find_by(id: puppet.status).stage unless WideStatus.find_by(id: puppet.status).blank?
+          / %td= status
 
-- unless @incomplete_wide_puppets.blank?
-  %table.table.table-striped.table-bordered.table-hover
-    %tr
-      %th Incomplete Mid-Close Puppets
-      %th Status
-  %tbody
-    - @incomplete_mc_puppets.each do |puppet|
-      %tr
-        %td= puppet.name
-        - status = McStatus.find_by(id: puppet.status).stage unless McStatus.find_by(id: puppet.status).blank?
-        %td= status
+  - unless @incomplete_mc_puppets.empty?
+    %table.table.table-striped.table-bordered.table-hover
+      %thead
+        %tr
+          %th Incomplete Mid-Close Puppets
+          %th Status
+      %tbody
+        - @incomplete_mc_puppets.each do |puppet|
+          %tr
+            %td= puppet.name
+          / - status = McStatus.find_by(id: puppet.status).stage unless McStatus.find_by(id: puppet.status).blank?
+          / %td= status
 
-- unless @incomplete_props.blank?
-  %table.table.table-striped.table-bordered.table-hover
-    %tr
-      %th Incomplete Props
-      %th Status
-  %tbody
-    - @incomplete_props.each do |prop|
-      %tr
-        %td= prop.name
-        - status = RegStatus.find_by(id: prop.status).stage unless RegStatus.find_by(id: prop.status).blank?
-        %td= status
+  - unless @incomplete_props.empty?
+    %table.table.table-striped.table-bordered.table-hover
+      %thead
+        %tr
+          %th Incomplete Props
+          %th Status
+      %tbody
+        - @incomplete_props.each do |prop|
+          %tr
+            %td= prop.name
+          / - status = RegStatus.find_by(id: prop.status).stage unless RegStatus.find_by(id: prop.status).blank?
+          / %td= status
 
 = link_to 'Back', shot_breakdowns_path

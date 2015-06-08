@@ -7,10 +7,9 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show
-  	@user = User.find(params[:id])
-  	#debugger
-  end
+  # def show
+  # 	@user = User.find(params[:id])
+  # end
 
   def new
   	@user = User.new
@@ -34,7 +33,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         if is_admin?
-          format.html { redirect_to users_path, notice: "#{@user.name} was successfully updated." }
+          format.html { redirect_to root_path, notice: "#{@user.name} was successfully updated." }
           format.json { render :show, status: :ok, location: @user }
         else
           format.html { redirect_to @user, notice: "#{@user.name} was successfully updated." }

@@ -17,9 +17,9 @@ Rails.application.routes.draw do
 
   resources :layers, only: [:new, :edit, :destroy]
 
-  resources :arrangements
+  resources :arrangements, :users
 
-  resources :users, :props, :wardrobes, :mc_puppets, :wide_puppets, :wide_statuses, :mc_statuses, :reg_statuses, :locations, :difficulties, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :props, :wardrobes, :mc_puppets, :wide_puppets, :wide_statuses, :mc_statuses, :reg_statuses, :locations, :difficulties, only: [:index, :new, :create, :edit, :update, :destroy]
 
 
   # The priority is based upon order of creation: first created -> highest priority.

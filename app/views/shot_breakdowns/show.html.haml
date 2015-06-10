@@ -26,7 +26,7 @@
     - @layers.each do |layer| 
       %tr 
         %td= layer.title
-        %td= layer.seconds
+        %td= "#{layer.seconds} secs"
         -difficulty = Difficulty.find_by(id: layer.difficulty).name unless Layer.find_by(id: layer.difficulty).blank?
         %td= difficulty
         %td= layer.time

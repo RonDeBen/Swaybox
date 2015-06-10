@@ -56,7 +56,7 @@ class DifficultiesController < ApplicationController
   def destroy
     @difficulty.destroy
     respond_to do |format|
-      format.html { redirect_to difficulties_url, notice: 'Difficulty was successfully destroyed.' }
+      format.html { redirect_to action: "index", notice: 'Difficulty was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

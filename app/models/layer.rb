@@ -35,4 +35,18 @@ class Layer < ActiveRecord::Base
       end
     end
   end
+
+
+  def time
+    if(self.seconds == nil)
+      self.seconds = 0
+    elsif(self.difficulty == "Mid-Close Medium")
+      return (self.seconds + 4) * 150 + (20*60)
+    elsif(self.difficulty == "Mid-Close Difficult" || self.difficulty == "Wide")
+      return (self.seconds + 4) * 300 + (45*60)
+    else
+      return (self.seconds + 4) * 90 + (20*60)
+    end
+  end
+
 end

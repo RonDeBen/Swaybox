@@ -10,7 +10,6 @@
     %tr
       %th Name
       %th Time
-      %th Transition
       %th Cam
       %th W Puppets
       %th MC Puppets
@@ -25,7 +24,7 @@
     - @layers.each do |layer| 
       %tr 
         %td= layer.title
-        %td= "time formula goes here"
+        %td= distance_of_time_in_words(layer.time)
         %td= layer.transition
         %td= layer.cam
         - wide_pups = ""

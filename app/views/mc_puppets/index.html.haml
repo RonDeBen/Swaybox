@@ -11,7 +11,8 @@
     - @mc_puppets.order('mc_puppets.name asc').each do |puppet|
       %tr
         %td= puppet.name
-        %td= McStatus.find_by(id: puppet.status).stage
+        - status = McStatus.find_by(id: puppet.status).stage unless McStatus.find_by(id: puppet.status).blank?
+        %td= status
         %td= link_to 'Edit', edit_mc_puppet_path(puppet), class: "btn btn-warning btn-block"
         %td= link_to 'Destroy', puppet, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-block"
 %br/

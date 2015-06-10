@@ -29,7 +29,7 @@
         %td= layer.seconds
         -difficulty = Difficulty.find_by(id: layer.difficulty).name unless Layer.find_by(id: layer.difficulty).blank?
         %td= difficulty
-        %td= distance_of_time_in_words(layer.time)
+        %td= layer.time
         %td= layer.transition
         %td= layer.cam
         - wide_pups = ""

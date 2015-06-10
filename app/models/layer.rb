@@ -41,11 +41,12 @@ class Layer < ActiveRecord::Base
     if(self.seconds == nil)
       self.seconds = 0
     elsif(self.difficulty == "Mid-Close Medium")
-      return "#{(self.seconds + 4) * 2.5 + (20)} minutes"
+      return "#{(self.seconds.to_f + 4) * 2.5 + (20)} minutes"
     elsif(self.difficulty == "Mid-Close Difficult" || self.difficulty == "Wide")
-      return "#{(self.seconds + 4) * 5 + (45)} minutes"
+      return "#{(self.seconds.to_f + 4) * 5 + (45)} minutes"
     else
-      return "#{(self.seconds + 4) * 1.5 + (20)} minutes"
+      self.seconds
+      return "#{(self.seconds.to_f + 4) * 1.5 + (10)} minutes"
     end
   end
 

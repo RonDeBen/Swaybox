@@ -40,13 +40,13 @@ class Layer < ActiveRecord::Base
   def time
     if(self.seconds == nil)
       self.seconds = 0
-    elsif(self.difficulty == "Mid-Close Medium")
-      return "#{(self.seconds.to_f + 4) * 2.5 + (20)} minutes"
-    elsif(self.difficulty == "Mid-Close Difficult" || self.difficulty == "Wide")
-      return "#{(self.seconds.to_f + 4) * 5 + (45)} minutes"
+    elsif(Difficulty.find_by(id: self.difficulty) == "Mid-Close Medium")
+      return "#{(self.seconds + 4) * 2.5 + (20)} minutes"
+    elsif(Difficulty.find_by(id: self.difficulty) == "Mid-Close Difficult" || Difficulty.find_by(id: self.difficulty) == "Wide")
+      return "#{(self.seconds + 4) * 5 + (45)} minutes"
     else
       self.seconds
-      return "#{(self.seconds.to_f + 4) * 1.5 + (10)} minutes"
+      return "#{(self.seconds + 4) * 1.5 + (10)} minutes"
     end
   end
 

@@ -12,10 +12,10 @@
     = ff.remove_nested_fields_link 'Remove Layer', class: 'btn btn-danger btn-block', role: 'button'
     = ff.text_field :title, label:"Name"
     = ff.text_field :seconds, label:"Seconds"
+    = ff.collection_select :difficulty, Difficulty.order('difficulties.name asc').all, :id, :name, include_blank:true, label:"Difficulty"
     = ff.select :takes, 2..10
     = ff.text_field :transition, label:"Transition"
     = ff.text_field :cam, label:"Cam"
-    = ff.collection_select :difficulty, Difficulty.order('difficulties.name asc').all, :id, :name, include_blank:true, label:"Difficulty"
     = ff.nested_fields_for :wide_puppets do |fff|
       .left= fff.collection_select :id, WidePuppet.order('wide_puppets.name asc').all, :id, :name, label:"Wide Puppet"
       .right= fff.remove_nested_fields_link 'Remove Wide Puppet', class: 'btn btn-danger', role: 'button'

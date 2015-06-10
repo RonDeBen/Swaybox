@@ -6,6 +6,6 @@
         - @wide_puppet.errors.full_messages.each do |msg|
           %li= msg
   = f.text_field :name, label:"Name"
-  = f.collection_select :status, WideStatus.all, :id, :stage, include_blank:true
+  = f.collection_select :status, WideStatus.all, :id, :stage
   .actions
     = f.submit 'Save'

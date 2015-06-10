@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     end 
   end
 
-  resources :layers, only: [:new, :edit, :destroy]
+  resources :layers
 
   resources :arrangements, :users
 

@@ -30,7 +30,6 @@
         -difficulty = Difficulty.find_by(id: layer.difficulty).name unless Layer.find_by(id: layer.difficulty).blank?
         %td= difficulty
         %td= layer.time
-        %td= layer.transition
         %td= layer.cam
         - wide_pups = ""
         - layer.wide_puppets.each do |puppet|

@@ -8,7 +8,6 @@
   = f.text_field :title, label:"Name"
   = f.text_field :seconds, label:"Seconds"
   = f.collection_select :difficulty, Difficulty.order('difficulties.name asc').all, :id, :name, include_blank:true, label:"Difficulty"
-  = f.text_field :transition, label:"Transition"
   = f.text_field :cam, label:"Cam"
   = f.nested_fields_for :wide_puppets do |ff|
     .left= ff.collection_select :id, WidePuppet.order('wide_puppets.name asc').all, :id, :name, label:"Wide Puppet"

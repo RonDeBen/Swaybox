@@ -62,7 +62,7 @@
       %tbody
         - @complete_wide_puppets.each do |puppet|
           %tr
-            %td= puppet.name
+            %td.span4= puppet.name
   - unless @complete_mc_puppets.empty?
     %table.table.table-striped.table-bordered.table-hover
       %thead
@@ -82,7 +82,7 @@
           %tr
             %td= prop.name
 
-.col-md-8
+.col-md-8.left-line
   - unless @incomplete_wide_puppets.empty?
     %table.table.table-striped.table-bordered.table-hover
       %thead
@@ -92,9 +92,9 @@
       %tbody
         - @incomplete_wide_puppets.each do |puppet|
           %tr
-            %td= puppet.name
+            %td.col-md-4= puppet.name
             - status = WideStatus.find_by(id: puppet.status).stage unless WideStatus.find_by(id: puppet.status).blank?
-            %td= status
+            %td.col-md-2= status
 
   - unless @incomplete_mc_puppets.empty?
     %table.table.table-striped.table-bordered.table-hover
@@ -105,9 +105,9 @@
       %tbody
         - @incomplete_mc_puppets.each do |puppet|
           %tr
-            %td= puppet.name
+            %td.col-md-4= puppet.name
             - status = McStatus.find_by(id: puppet.status).stage unless McStatus.find_by(id: puppet.status).blank?
-            %td= status
+            %td.col-md-2= status
 
   - unless @incomplete_props.empty?
     %table.table.table-striped.table-bordered.table-hover
@@ -118,8 +118,7 @@
       %tbody
         - @incomplete_props.each do |prop|
           %tr
-            %td= prop.name
+            %td.col-md-4= prop.name
             - status = RegStatus.find_by(id: prop.status).stage unless RegStatus.find_by(id: prop.status).blank?
-            %td= status
-
+            %td.col-md-2= status
 = link_to 'Back', shot_breakdowns_path

@@ -7,7 +7,7 @@
           %li= msg
   = f.text_field :title, label:"Name"
   = f.text_field :seconds, label:"Seconds"
-  = f.collection_select :difficulty, Difficulty.order('difficulties.name asc').all, :id, :name, include_blank:true, label:"Difficulty"
+  = f.collection_select :difficulty, Difficulty.all, :id, :name, include_blank:true, label:"Difficulty"
   = f.text_field :cam, label:"Cam"
   = f.nested_fields_for :wide_puppets do |ff|
     .left= ff.collection_select :id, WidePuppet.order('wide_puppets.name asc').all, :id, :name, label:"Wide Puppet"
@@ -29,7 +29,7 @@
   = f.collection_select :wardrobe, Wardrobe.order('wardrobes.name asc').all, :id, :name, include_blank:true, label:"Wardrobe"
 
   = f.text_field :tracking, label:"Tracking"
-  = f.text_field :pcolor, label:"PColor"
+  = f.select :pcolor, ["Blue", "Green", "White", "Black"], label:"PColor"
   = f.text_area :notes, label:"Notes"
   .actions
     = f.submit 'Save', class: "btn btn-info btn-block"

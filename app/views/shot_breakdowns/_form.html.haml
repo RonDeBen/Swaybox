@@ -12,7 +12,7 @@
     = ff.remove_nested_fields_link 'Remove Layer', class: 'btn btn-danger btn-block', role: 'button'
     = ff.text_field :title, label:"Name"
     = ff.text_field :seconds, label:"Seconds"
-    = ff.collection_select :difficulty, Difficulty.order('difficulties.name asc').all, :id, :name, include_blank:true, label:"Difficulty"
+    = ff.collection_select :difficulty, Difficulty.all, :id, :name, include_blank:true, label:"Difficulty"
     = ff.text_field :cam, label:"Cam"
     = ff.nested_fields_for :wide_puppets do |fff|
       .left= fff.collection_select :id, WidePuppet.order('wide_puppets.name asc').all, :id, :name, label:"Wide Puppet"
@@ -34,7 +34,7 @@
     = ff.collection_select :wardrobe, Wardrobe.order('wardrobes.name asc').all, :id, :name, include_blank:true, label:"Wardrobe"
 
     = ff.text_field :tracking, label:"Tracking"
-    = ff.text_field :pcolor, label:"PColor"
+    = ff.select :pcolor, ["Blue", "Green", "White", "Black"], label:"PColor"
     = ff.text_area :notes, label:"Notes"
   = f.add_nested_fields_link :layers, 'Add Layer', class: 'btn btn-success btn-block', role: 'button'
   .actions
